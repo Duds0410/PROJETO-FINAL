@@ -9,21 +9,21 @@ def main(page: ft.Page):
     page.padding = ft.padding.all(0)
     page.bgcolor = ft.colors.PURPLE_800
 
-    # Lista para armazenar as notas publicadas
+   
     notas_publicadas = []
 
-    # Referência para o campo de texto onde o usuário vai digitar a nota
+   
     nota_textfield = ft.Ref()
 
     def logar(e: ft.ControlEvent):
-        page.controls.clear()  # Limpa todas as telas
-        page.add(tela_publicacao)  # Exibe a tela de publicação de notas
+        page.controls.clear()  
+        page.add(tela_publicacao)  
 
     def publicar_nota(e: ft.ControlEvent):
         texto_nota = nota_textfield.current.value
         if texto_nota:
             notas_publicadas.append(texto_nota)
-            nota_textfield.current.value = ""  # Limpa o campo de texto
+            nota_textfield.current.value = ""  
             exibir_notas()
 
     def exibir_notas():
@@ -31,13 +31,13 @@ def main(page: ft.Page):
             controls=[ft.Text(value=nota, color=ft.colors.WHITE, size=14) for nota in notas_publicadas],
             scroll=ft.ScrollMode.AUTO
         )
-        # Atualiza a lista de notas na tela de publicação
+       
         tela_publicacao.controls[-1] = lista_notas
         page.update()
 
     def voltar_login(e: ft.ControlEvent):
         page.controls.clear()
-        page.add(login)  # Exibe a tela de login novamente
+        page.add(login)  
 
     def exibir_tela_cadastro(e: ft.ControlEvent):
         page.controls.clear()
@@ -47,7 +47,7 @@ def main(page: ft.Page):
         page.controls.clear()
         page.add(tela_recuperar_senha)
 
-    # Tela de Cadastro
+ 
     tela_cadastro = ft.Column(
         controls=[
             ft.Container(
@@ -94,7 +94,6 @@ def main(page: ft.Page):
         horizontal_alignment=ft.CrossAxisAlignment.CENTER
     )
 
-    # Tela de Recuperação de Senha
     tela_recuperar_senha = ft.Column(
         controls=[
             ft.Container(
@@ -139,7 +138,6 @@ def main(page: ft.Page):
         horizontal_alignment=ft.CrossAxisAlignment.CENTER
     )
 
-    # Tela de Publicação de Nota
     tela_publicacao = ft.Column(
         controls=[
             ft.Container(
@@ -195,7 +193,7 @@ def main(page: ft.Page):
         horizontal_alignment=ft.CrossAxisAlignment.CENTER
     )
 
-    # Tela de Login
+
     login = ft.Column(
         controls=[
             ft.Container(
@@ -244,7 +242,7 @@ def main(page: ft.Page):
         horizontal_alignment=ft.CrossAxisAlignment.CENTER
     )
 
-    # Exibe a tela de login inicialmente
+
     page.add(login)
 
 if __name__ == '__main__':
